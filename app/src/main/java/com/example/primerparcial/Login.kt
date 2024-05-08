@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.primerparcial.ui.theme.PrimerparcialTheme
+import androidx.compose.material3.Typography
 
 class WelcomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +42,6 @@ fun WelcomeScreen() {
     ) {
         Text(
             text = "Bienvenido",
-            style = MaterialTheme.typography.h4,
             modifier = Modifier.padding(bottom = 16.dp)
         )
         Box {

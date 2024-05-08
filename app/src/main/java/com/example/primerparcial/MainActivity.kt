@@ -1,5 +1,3 @@
-package com.example.primerparcial
-
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -83,14 +81,14 @@ fun LoginScreen() {
             keyboardActions = KeyboardActions(
                 onDone = {
                     keyboardController?.hide()
-                    validateLogin(email, password, context)
+                    validateLogin(email, password, context, error)
                 }
             ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 8.dp)
         )
-        if (error) {
+        if (error.value) {
             Text(
                 text = "Usuario o contraseña incorrecta",
                 color = Color.Red,
@@ -100,7 +98,7 @@ fun LoginScreen() {
         }
         Button(
             onClick = {
-                validateLogin(email, password, context)
+                validateLogin(email, password, context, error)
             },
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -109,13 +107,13 @@ fun LoginScreen() {
     }
 }
 
-fun validateLogin(email: String, password: String, context: Context) {
+fun validateLogin(email: String, password: String, context: Context, errorState: Boolean) {
     if (email == "pedro@pe.com.ar" && password == "abc123") {
-        // Login successful
+
         context.startActivity(Intent(context, WelcomeActivity::class.java))
     } else {
         // Login failed
-        error = true
+        errorState.value = true
     }
 }
 
